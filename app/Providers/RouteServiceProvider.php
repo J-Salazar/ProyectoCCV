@@ -39,7 +39,70 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapDesarrolladorRoutes();
+
+        $this->mapUsuarioRoutes();
+
+        $this->mapAdministradorRoutes();
+
         //
+    }
+
+    /**
+     * Define the "administrador" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdministradorRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'administrador', 'auth:administrador'],
+            'prefix' => 'administrador',
+            'as' => 'administrador.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/administrador.php');
+        });
+    }
+
+    /**
+     * Define the "usuario" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapUsuarioRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'usuario', 'auth:usuario'],
+            'prefix' => 'usuario',
+            'as' => 'usuario.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/usuario.php');
+        });
+    }
+
+    /**
+     * Define the "desarrollador" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapDesarrolladorRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'desarrollador', 'auth:desarrollador'],
+            'prefix' => 'desarrollador',
+            'as' => 'desarrollador.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/desarrollador.php');
+        });
     }
 
     /**
