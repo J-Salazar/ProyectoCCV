@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStakeholdersTable extends Migration
+class CreateEquiposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateStakeholdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('stakeholders', function (Blueprint $table) {
+        Schema::create('equipos', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('nombre');
-            $table->string('apellido');
+            $table->string('lider');
+            $table->string('desarrollador');
 
-            $table->string('email')->unique();
-
-
-            $table->string('proyecto')->nullable();
 
 
             $table->timestamps();
@@ -36,6 +33,6 @@ class CreateStakeholdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stakeholders');
+        Schema::dropIfExists('equipos');
     }
 }

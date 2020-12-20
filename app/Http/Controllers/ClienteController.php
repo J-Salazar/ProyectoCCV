@@ -17,6 +17,35 @@ class ClienteController extends Controller
         //
     }
 
+    public function crear(Request $request, $id){
+
+        $usuario = auth()->user();
+
+        return view('administrador.crearcliente')->with(['id'=>$id, 'usuario'=>$usuario]);
+    }
+
+    public function crearcliente(Request $request, $id){
+
+        $cliente = new Cliente;
+
+        $cliente->razonsocial   = $request->razonsocial;
+        $cliente->representante = $request->representante;
+        $cliente->ruc   = $request->ruc;
+        $cliente->contacto  = $request->contacto;
+        $cliente->email = $request->email;
+        $cliente->direccion = $request->direccion;
+        $cliente->stakeholder   = $request->stakeholder;
+
+        $cliente->usuarioid = $id;
+        $cliente->nivel = 'administrador';
+
+        $cliente->save();
+
+        $mensaje = 'Cliente creado satisfactoriamente';
+
+        return redirect(url()->previous())->with(['mensaje'=>$mensaje]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

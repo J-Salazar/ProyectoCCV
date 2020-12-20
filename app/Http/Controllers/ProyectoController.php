@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Proyecto;
+use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ProyectoController extends Controller
 {
@@ -25,6 +27,77 @@ class ProyectoController extends Controller
     public function create()
     {
         //
+    }
+
+    public function crear(Request $request, $clienteid){
+
+        $usuario = auth()->user();
+
+        return view('administrador.crearproyecto')->with(['clienteid'=>$clienteid,'usuario'=>$usuario]);
+    }
+
+    public function crearproyecto(Request $request, $clienteid){
+
+        $nuevoproyecto = new Proyecto;
+
+        //$new_cliente -> orgnzs() -> associate($orgnz);
+        $nuevoproyecto->nombre      = $request->nombre;
+        $nuevoproyecto->descripcion = $request->descripcion;
+        $nuevoproyecto->stakeholder = $request->stakeholder;
+        $nuevoproyecto->equipo      = $request->equipo;
+        $nuevoproyecto->estimacion  = $request->estimacion;
+        $nuevoproyecto->estado      = $request->estado;
+
+        $nuevoproyecto->clienteid   = $request->clienteid;
+
+
+
+        $nuevoproyecto->save();
+
+        $mensaje = 'Proyecto creado exitosamente';
+        $usuario = auth()->user();
+
+        return redirect(url('/administrador/home'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
+
+//        return view('administrador.crearproyecto')->with(['clienteid'=>$clienteid]);
+    }
+
+    public function verproyecto(Request $request, $clienteid){
+
+        $proyectos = Proyecto::where('clienteid',$clienteid)->get();
+        $cliente = Cliente::Find($clienteid);
+
+        $usuario = auth()->user();
+
+        return view('administrador.verproyecto')->with(['proyectos'=>$proyectos, 'cliente'=>$cliente,'usuario'=>$usuario]);
+    }
+
+    public function editar(Request $request, $proyectoid){
+
+        $proyecto = Proyecto::where('id',$proyectoid)->get()->first();
+        $usuario = auth()->user();
+//        dd($proyecto);
+        return view('administrador.editarproyecto')->with(['proyecto'=>$proyecto,'usuario'=>$usuario]);
+    }
+
+    public function editarproyecto(Request $request, $proyectoid){
+
+        $proyecto = Proyecto::Find($proyectoid);
+
+        $proyecto->nombre       = $request->nombre;
+        $proyecto->descripcion  = $request->descripcion;
+        $proyecto->stakeholder  = $request->stakeholder;
+        $proyecto->equipo       = $request->equipo;
+        $proyecto->estimacion   = $request->estimacion;
+        $proyecto->estado       = $request->estado;
+
+        $proyecto->save();
+
+        $mensaje = 'Proyecto actualizado';
+        $usuario = auth()->user();
+
+        return redirect(url()->previous())->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
+
     }
 
     /**
