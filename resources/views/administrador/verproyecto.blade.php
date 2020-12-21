@@ -100,11 +100,12 @@
                 </div>
             </div>
             <div class="d-flex flex-row-reverse pb-2">
+                @if($usuario->id == $proyecto->clienteid)
                 <button type="submit" class="btn btn-link border-primary align-items-center">
                     <a class="" href="/administrador/editarproyecto/{{$proyecto->id}}">Editar</a>
 
                 </button>
-
+                @endif
             </div>
 
 

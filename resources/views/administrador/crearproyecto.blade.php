@@ -12,7 +12,7 @@
 {{--        {{$num = auth()->user()->id}}--}}
 {{--    @endauth--}}
 
-    <form class="form-horizontal text-left" role="form" method="POST" action="{{ url('administrador/crearcliente/'.$id) }}">
+    <form class="form-horizontal text-left" role="form" method="POST" action="{{ url('administrador/crearproyecto/'.$clienteid) }}">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
             <label for="nombre" class="control-label">Nombre</label>

@@ -28,6 +28,37 @@ Route::post('/crearproyecto/{clienteid}','ProyectoController@crearproyecto');
 
 
 Route::get('/crearcliente/{id}','ClienteController@crear');
-
 Route::post('/crearcliente/{id}','ClienteController@crearcliente');
+
+
+Route::get('/verusuarios','UsuarioAuth\RegisterController@ver');
+
+Route::get('/crearusuario','UsuarioAuth\RegisterController@crear');
+Route::post('/crearusuario','UsuarioAuth\RegisterController@crearusuario');
+Route::get('/editarusuario/{usuarioid}','UsuarioAuth\RegisterController@editar');
+Route::post('/editarusuario/{usuarioid}','UsuarioAuth\RegisterController@editarusuario');
+
+
+Route::get('/verdesarrolladores','DesarrolladorAuth\RegisterController@ver');
+
+Route::get('/creardesarrollador','DesarrolladorAuth\RegisterController@crear');
+Route::post('/creardesarrollador','DesarrolladorAuth\RegisterController@creardesarrollador');
+Route::get('/editardesarrollador/{desarrolladorid}','DesarrolladorAuth\RegisterController@editar');
+Route::post('/editardesarrollador/{desarrolladorid}','DesarrolladorAuth\RegisterController@editardesarrollador');
+
+
+Route::get('/verequipos','EquipoController@ver');
+
+Route::get('/crearequipo','EquipoController@crear');
+Route::post('/crearequipo','EquipoController@crearequipo');
+
+
+Route::get('/verstakeholders','EquipoController@ver');
+
+Route::get('/crearstakeholder','EquipoController@crear');
+Route::post('/crearstakeholder','EquipoController@crearstakeholder');
+
+
+
+
 

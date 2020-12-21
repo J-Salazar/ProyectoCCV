@@ -21,7 +21,6 @@ class CreateEquiposTable extends Migration
             $table->string('desarrollador');
 
 
-
             $table->timestamps();
         });
     }
