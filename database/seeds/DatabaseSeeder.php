@@ -117,5 +117,38 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        foreach (range(1,10) as $index) {
+
+            DB::table('epicas')->insert([
+
+                'proyecto'      => $faker->catchPhrase,
+                'nombre'        => $faker->name,
+                'resumen'       => $faker->bs,
+
+                'desarrollador' => $faker->numberBetween($min=1,$max=5),
+
+
+            ]);
+        }
+
+        foreach (range(1,10) as $index) {
+
+            DB::table('historia_usuarios')->insert([
+
+                'resumen'       => $faker->bs,
+                'descripcion'   => $faker->catchPhrase,
+                'usuario'       => $faker->name,
+                'proyecto'      => $faker->catchPhrase,
+                'prioridad'     => $faker->randomElement(['alta','media','baja']),
+                'tiempoestimado'=> $faker->numberBetween($min=1, $max=10),
+                'epica'         => $faker->catchPhrase,
+                'desarrollador' => $faker->numberBetween($min=1,$max=5),
+
+
+
+            ]);
+        }
+
+
     }
 }

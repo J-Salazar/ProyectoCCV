@@ -29,7 +29,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public $redirectTo = '/desarrollador/home';
+
+    public $redirectTo = '/desarrollador/verepica/';
 
     /**
      * Create a new controller instance.

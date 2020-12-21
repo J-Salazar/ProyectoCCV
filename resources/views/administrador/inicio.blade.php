@@ -40,18 +40,23 @@
                 <tbody>
                 @foreach($clientes as $cliente)
                     <tr>
-                        <th scope="row">{{ $cliente->razonsocial }}</th>
-                        <td>{{ $cliente->ruc }}</td>
-                        <td>{{ $cliente->representante }}</td>
-                        <td>{{ $cliente->contacto }}</td>
-                        <td>{{ $cliente->email }}</td>
-                        <td class="">
-                            @if($cliente->usuarioid == $usuario->id)
-                            <button class="btn-primary rounded"><a href="{{url('/administrador/verproyecto/'.$cliente->id)}}" class="text-white text-decoration-none">Ver Proyecto</a></button>
-                            <button class="btn-primary rounded"><a href="{{url('/administrador/crearproyecto/'.$cliente->id)}}" class="text-white text-decoration-none">Crear Proyecto</a></button></td>
-                            @else
-                            <button class="btn-primary rounded"><a href="{{url('/administrador/verproyecto/'.$cliente->id)}}" class="text-white text-decoration-none">Ver Proyecto</a></button>
-                            @endif
+
+                        @if($cliente->usuarioid == $usuario->id)
+
+                            <th scope="row">{{ $cliente->razonsocial }}</th>
+                            <td>{{ $cliente->ruc }}</td>
+                            <td>{{ $cliente->representante }}</td>
+                            <td>{{ $cliente->contacto }}</td>
+                            <td>{{ $cliente->email }}</td>
+                            <td class="">
+                                <button class="btn-primary rounded"><a href="{{url('/administrador/verproyecto/'.$cliente->id)}}" class="text-white text-decoration-none">Ver Proyecto</a></button>
+                                <button class="btn-primary rounded"><a href="{{url('/administrador/crearproyecto/'.$cliente->id)}}" class="text-white text-decoration-none">Crear Proyecto</a></button>
+                            </td>
+
+
+
+
+
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,6 +69,8 @@
                                 </div>
                             </div>
                         </td>
+
+                        @endif
                     </tr>
                 @endforeach
 
