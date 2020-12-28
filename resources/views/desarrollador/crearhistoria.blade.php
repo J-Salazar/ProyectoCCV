@@ -62,8 +62,13 @@
             <label for="proyecto" class="control-label">Proyecto</label>
 
             <div class="">
-                <input id="proyecto" type="string" class="form-control" name="proyecto" >
+{{--                <input id="proyecto" type="string" class="form-control" name="proyecto" >--}}
+                <select name="proyecto" id="proyecto">
+                    @foreach($proyectos as $proyecto)
+                        <option value="{{$proyecto->id}}">{{$proyecto->id}}. {{$proyecto->nombre}}</option>
+                    @endforeach
 
+                </select>
                 @if ($errors->has('proyecto'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('proyecto') }}</strong>
@@ -112,7 +117,13 @@
             <label for="epica" class="control-label">Épica</label>
 
             <div class="">
-                <input id="epica" type="string" class="form-control" name="epica" >
+{{--                <input id="epica" type="string" class="form-control" name="epica" >--}}
+                <select name="epica" id="epica">
+                    @foreach($epicas as $epica)
+                        <option value="{{$epica->id}}" >{{$epica->id}}. {{$epica->nombre}}</option>
+                    @endforeach
+
+                </select>
 
                 @if ($errors->has('epica'))
                     <span class="help-block">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipo;
 use App\Proyecto;
 use App\Cliente;
+use App\Stakeholder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -33,7 +35,12 @@ class ProyectoController extends Controller
 
         $usuario = auth()->user();
 
-        return view('administrador.crearproyecto')->with(['clienteid'=>$clienteid,'usuario'=>$usuario]);
+        $stakeholders = Stakeholder::all();
+
+        $equipos =  Equipo::all();
+
+        return view('administrador.crearproyecto')->with(['clienteid'=>$clienteid,'usuario'=>$usuario,
+            'stakeholders'=>$stakeholders, 'equipos'=>$equipos]);
     }
 
     public function crearproyecto(Request $request, $clienteid){
@@ -77,7 +84,12 @@ class ProyectoController extends Controller
         $proyecto = Proyecto::where('id',$proyectoid)->get()->first();
         $usuario = auth()->user();
 //        dd($proyecto);
-        return view('administrador.editarproyecto')->with(['proyecto'=>$proyecto,'usuario'=>$usuario]);
+        $stakeholders = Stakeholder::all();
+
+        $equipos =  Equipo::all();
+
+        return view('administrador.editarproyecto')->with(['proyecto'=>$proyecto,'usuario'=>$usuario,
+            'stakeholders'=>$stakeholders,'equipos'=>$equipos]);
     }
 
     public function editarproyecto(Request $request, $proyectoid){

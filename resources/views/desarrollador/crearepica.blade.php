@@ -1,7 +1,7 @@
 @extends('desarrollador.layout.plantilla')
 
 @section('contenido')
-    <h1 class="mt-4">Crear Nuevo Proyecto</h1>
+    <h1 class="mt-4">Crear Nueva Épica</h1>
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">{{Session::get('mensaje')}} </li>
@@ -18,8 +18,13 @@
             <label for="proyecto" class="control-label">Proyecto</label>
 
             <div class="">
-                <input id="proyecto" type="string" class="form-control" name="proyecto">
+{{--                <input id="proyecto" type="string" class="form-control" name="proyecto">--}}
+                <select name="proyecto" id="proyecto">
+                    @foreach($proyectos as $proyecto)
+                        <option value="{{$proyecto->id}}" >{{$proyecto->id}}. {{$proyecto->nombre}}</option>
+                    @endforeach
 
+                </select>
                 @if ($errors->has('proyecto'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('proyecto') }}</strong>
@@ -46,7 +51,7 @@
             <label for="resumen" class="control-label">Resumen</label>
 
             <div class="">
-                <input id="resumen" type="string" class="form-control" name="resumen">
+                <textarea id="resumen" type="string" class="form-control" name="resumen"></textarea>
 
                 @if ($errors->has('resumen'))
                     <span class="help-block">

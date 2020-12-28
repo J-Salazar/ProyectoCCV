@@ -51,12 +51,16 @@ Route::get('/verequipos','EquipoController@ver');
 
 Route::get('/crearequipo','EquipoController@crear');
 Route::post('/crearequipo','EquipoController@crearequipo');
+Route::get('/editarequipo/{equipoid}','EquipoController@editar');
+Route::post('/editarequipo/{equipoid}','EquipoController@editarequipo');
 
 
-Route::get('/verstakeholders','EquipoController@ver');
+Route::get('/verstakeholders','StakeholderController@ver');
 
-Route::get('/crearstakeholder','EquipoController@crear');
-Route::post('/crearstakeholder','EquipoController@crearstakeholder');
+Route::get('/crearstakeholder','StakeholderController@crear');
+Route::post('/crearstakeholder','StakeholderController@crearstakeholder');
+Route::get('/editarstakeholder/{stakeholderid}','StakeholderController@editar');
+Route::post('/editarstakeholder/{stakeholderid}','StakeholderController@editarstakeholder');
 
 
 

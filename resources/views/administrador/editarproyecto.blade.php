@@ -46,9 +46,17 @@
 
             <div class="form-group{{ $errors->has('stakeholder') ? ' has-error' : '' }}">
                 <label for="stakeholder" class="control-label">Stakeholder</label>
-
+{{--                {{dd($stakeholders)}}--}}
                 <div class="">
-                    <input id="stakeholder" type="string" class="form-control" name="stakeholder" value="{{$proyecto->stakeholder}}">
+{{--                    <input id="stakeholder" type="string" class="form-control" name="stakeholder" value="{{$proyecto->stakeholder}}">--}}
+                    <select name="stakeholder" id="stakeholder">
+
+                        @foreach($stakeholders as $stakeholder)
+
+                            <option value="{{$stakeholder->id}}" {{$stakeholder->id == $proyecto->stakeholder ? 'selected' : ''}}>{{$stakeholder->id}}. {{$stakeholder->nombre}}</option>
+                        @endforeach
+
+                    </select>
 
                     @if ($errors->has('stakeholder'))
                         <span class="help-block">
@@ -62,8 +70,13 @@
                 <label for="equipo" class="control-label">Equipo</label>
 
                 <div class="">
-                    <input id="equipo" type="string" class="form-control" name="equipo" value="{{$proyecto->equipo}}">
+{{--                    <input id="equipo" type="string" class="form-control" name="equipo" value="{{$proyecto->equipo}}">--}}
+                    <select name="equipo" id="equipo">
+                        @foreach($equipos as $equipo)
+                            <option value="{{$equipo->id}}" {{$proyecto->equipo == $equipo->id ? 'selected' : ''}}>{{$equipo->id}}. {{$equipo->nombre}}</option>
+                        @endforeach
 
+                    </select>
                     @if ($errors->has('equipo'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('equipo') }}</strong>

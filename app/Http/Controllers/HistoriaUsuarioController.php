@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Epica;
 use App\HistoriaUsuario;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class HistoriaUsuarioController extends Controller
@@ -32,7 +34,10 @@ class HistoriaUsuarioController extends Controller
 
         $usuario = auth()->user();
 
-        return view('desarrollador.crearhistoria')->with(['desarrolladorid'=>$desarrolladorid,'usuario'=>$usuario]);
+        $epicas = Epica::all();
+        $proyectos = Proyecto::all();
+
+        return view('desarrollador.crearhistoria')->with(['desarrolladorid'=>$desarrolladorid,'usuario'=>$usuario,'epicas'=>$epicas,'proyectos'=>$proyectos]);
     }
 
     public function crearhistoriausuario(Request $request, $desarrolladorid){
@@ -84,7 +89,11 @@ class HistoriaUsuarioController extends Controller
         $historia = HistoriaUsuario::where('id',$historiausuarioid)->get()->first();
         $usuario = auth()->user();
 
-        return view('desarrollador.editarhistoria')->with(['historia'=>$historia,'usuario'=>$usuario,'historiausuarioid'=>$historiausuarioid]);
+        $epicas = Epica::all();
+        $proyectos = Proyecto::all();
+
+        return view('desarrollador.editarhistoria')->with(['historia'=>$historia,'usuario'=>$usuario,'historiausuarioid'=>$historiausuarioid,
+            'epicas'=>$epicas,'proyectos'=>$proyectos]);
     }
 
     public function editarhistoriausuario(Request $request, $historiausuarioid){

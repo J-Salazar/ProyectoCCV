@@ -16,7 +16,13 @@
             <label for="proyecto" class="control-label">Proyecto</label>
 
             <div class="">
-                <input id="proyecto" type="string" class="form-control" name="proyecto" value="{{$epica->proyecto}}">
+{{--                <input id="proyecto" type="string" class="form-control" name="proyecto" value="{{$epica->proyecto}}">--}}
+                <select name="proyecto" id="proyecto">
+                    @foreach($proyectos as $proyecto)
+                        <option value="{{$proyecto->id}}" {{$epica->proyecto == $proyecto->id ? 'selected' : ''}}>{{$proyecto->id}}. {{$proyecto->nombre}}</option>
+                    @endforeach
+
+                </select>
 
                 @if ($errors->has('proyecto'))
                     <span class="help-block">

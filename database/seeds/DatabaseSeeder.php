@@ -71,6 +71,8 @@ class DatabaseSeeder extends Seeder
 
                 'email' => $faker->email,
 
+                'proyecto' => $faker->numberBetween($min=1, $max=10),
+
             ]);
         }
 
@@ -99,7 +101,7 @@ class DatabaseSeeder extends Seeder
                 'nombre'        => $faker->catchPhrase,
                 'descripcion'   => $faker->bs,
 //                'cliente' => $faker->numberBetween($min = 1000000000000, $max = 9999999999999),
-                'stakeholder'   => $faker->name,
+                'stakeholder'   => $faker->numberBetween($min=1,$max=10),
                 'equipo'        => $faker->numberBetween($min=1,$max=10),
                 'estimacion'    => $faker->numberBetween($min=0,$max=10) . 'semanas',
 //                'stakeholder' => $faker->lastName,
@@ -109,19 +111,19 @@ class DatabaseSeeder extends Seeder
 
             ]);
         }
-
-        DB::table('equipos')->insert([
-            'nombre'        => $faker->company,
-            'lider'         => $faker->name,
-            'desarrollador' => $faker->name,
-        ]);
-
+        foreach (range(1,10) as $index) {
+            DB::table('equipos')->insert([
+                'nombre' => $faker->company,
+                'lider' => $faker->name,
+                'desarrollador' => $faker->name,
+            ]);
+        }
 
         foreach (range(1,10) as $index) {
 
             DB::table('epicas')->insert([
 
-                'proyecto'      => $faker->catchPhrase,
+                'proyecto'      => $faker->numberBetween($min=1, $max=10),
                 'nombre'        => $faker->name,
                 'resumen'       => $faker->bs,
 
@@ -133,15 +135,21 @@ class DatabaseSeeder extends Seeder
 
         foreach (range(1,10) as $index) {
 
+            $valor = $faker->numberBetween($min=1,$max=10);
+//            $epica = \App\Epica::Where('id',$valor)->get();
+//            dd($epica->first()->nombre);
             DB::table('historia_usuarios')->insert([
 
                 'resumen'       => $faker->bs,
                 'descripcion'   => $faker->catchPhrase,
                 'usuario'       => $faker->name,
-                'proyecto'      => $faker->catchPhrase,
+                'proyecto'      => $faker->numberBetween($min=1,$max=10),
                 'prioridad'     => $faker->randomElement(['alta','media','baja']),
                 'tiempoestimado'=> $faker->numberBetween($min=1, $max=10),
-                'epica'         => $faker->catchPhrase,
+//                'epicaid'       => $faker->numberBetween($min=1,$max=10),
+                'epica'       => $valor,
+//                'epica'         => $faker->catchPhrase,
+//                'epica'         => $epica->first()->nombre,
                 'desarrollador' => $faker->numberBetween($min=1,$max=5),
 
 

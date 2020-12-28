@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Epica;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 
@@ -33,7 +34,9 @@ class EpicaController extends Controller
 
         $usuario = auth()->user();
 
-        return view('desarrollador.crearepica')->with(['desarrolladorid'=>$desarrolladorid,'usuario'=>$usuario]);
+        $proyectos = Proyecto::all();
+
+        return view('desarrollador.crearepica')->with(['desarrolladorid'=>$desarrolladorid,'usuario'=>$usuario,'proyectos'=>$proyectos]);
     }
 
     public function crearepica(Request $request, $desarrolladorid){
@@ -81,7 +84,9 @@ class EpicaController extends Controller
         $epica = Epica::where('id',$epicaid)->get()->first();
         $usuario = auth()->user();
 
-        return view('desarrollador.editarepica')->with(['epica'=>$epica,'usuario'=>$usuario,'epicaid'=>$epicaid]);
+        $proyectos = Proyecto::all();
+
+        return view('desarrollador.editarepica')->with(['epica'=>$epica,'usuario'=>$usuario,'epicaid'=>$epicaid,'proyectos'=>$proyectos]);
     }
 
     public function editarepica(Request $request, $epicaid){

@@ -95,7 +95,7 @@ class RegisterController extends Controller
         $nuevodesarrollador->apellido = $request->apellido;
         $nuevodesarrollador->email = $request->email;
         $nuevodesarrollador->equipo      = $request->equipo;
-        $nuevodesarrollador->password  = $request->password;
+        $nuevodesarrollador->password  = bcrypt($request->password);
         $nuevodesarrollador->nivel      = 'desarrollador';
 
         $nuevodesarrollador->equipo      = $request->equipo;

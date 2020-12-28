@@ -1,19 +1,13 @@
-@extends('desarrollador.layout.plantilla')
+@extends('administrador.layout.plantilla')
 
 @section('contenido')
 
-    <h1 class="mt-4">Épicas</h1>
+    <h1 class="mt-4">Equipos</h1>
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">{{Session::get('mensaje')}} </li>
         {{ Session::forget('mensaje') }}
     </ol>
-
-    <div>
-        <button>
-            <a href="{{url('desarrollador/crearepica/'.$usuario->id)}}"> Crear epica </a>
-        </button>
-    </div>
 
     <div class="card-body">
 
@@ -21,18 +15,18 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th>Proyecto</th>
                     <th>Nombre</th>
-                    <th>Resumen</th>
+                    <th>Lider</th>
+                    <th>Desarrollador</th>
 
                     <th><span> </span> </th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>Proyecto</th>
                     <th>Nombre</th>
-                    <th>Resumen</th>
+                    <th>Lider</th>
+                    <th>Desarrollador</th>
 
                     <th><span> </span> </th>
                 </tr>
@@ -40,18 +34,16 @@
 
 
                 <tbody>
-                @foreach($epicas as $epica)
+                @foreach($equipos as $equipo)
+
                     <tr>
 
-                        @if($epica->desarrollador == $usuario->id)
-                            @php
-                                $proyecto = App\Proyecto::Where('id',$epica->proyecto)->first()
-                            @endphp
-{{--                        {{dd($proyecto->nombre)}}--}}
-{{--                            <th scope="row">{{ $epica->proyecto }}</th>--}}
-                            <th scope="row">{{ $proyecto->nombre }}</th>
-                            <td>{{ $epica->nombre }}</td>
-                            <td>{{ $epica->resumen }}</td>
+{{--                        @if($cliente->usuarioid == $usuario->id)--}}
+
+                            <th scope="row">{{ $equipo->nombre }}</th>
+                            <td>{{ $equipo->lider }}</td>
+                            <td>{{ $equipo->desarrollador }}</td>
+
 
                             <td>
                                 <div class="dropdown">
@@ -59,14 +51,15 @@
                                         Acciones
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{url('desarrollador/editarepica/'.$epica->id)}}">Editar</a>
+                                        <a class="dropdown-item" href="{{url('administrador/editarequipo/'.$equipo->id)}}">Editar</a>
                                         <a class="dropdown-item" href="#">Eliminar</a>
                                     </div>
                                 </div>
                             </td>
 
-                        @endif
+{{--                        @endif--}}
                     </tr>
+
                 @endforeach
 
 

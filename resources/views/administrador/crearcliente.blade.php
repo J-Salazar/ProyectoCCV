@@ -96,19 +96,19 @@
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('stakeholder') ? ' has-error' : '' }}">
-            <label for="stakeholder" class="control-label">Stakeholder</label>
+{{--        <div class="form-group{{ $errors->has('stakeholder') ? ' has-error' : '' }}">--}}
+{{--            <label for="stakeholder" class="control-label">Stakeholder</label>--}}
 
-            <div class="">
-                <input id="stakeholder" type="string" class="form-control" name="stakeholder">
+{{--            <div class="">--}}
+{{--                <input id="stakeholder" type="string" class="form-control" name="stakeholder">--}}
 
-                @if ($errors->has('stakeholder'))
-                    <span class="help-block">
-                                        <strong>{{ $errors->first('stakeholder') }}</strong>
-                                    </span>
-                @endif
-            </div>
-        </div>
+{{--                @if ($errors->has('stakeholder'))--}}
+{{--                    <span class="help-block">--}}
+{{--                                        <strong>{{ $errors->first('stakeholder') }}</strong>--}}
+{{--                                    </span>--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
 

@@ -62,8 +62,13 @@
             <label for="proyecto" class="control-label">Proyecto</label>
 
             <div class="">
-                <input id="proyecto" type="string" class="form-control" name="proyecto" value="{{$historia->proyecto}}">
+{{--                <input id="proyecto" type="string" class="form-control" name="proyecto" value="{{$historia->proyecto}}">--}}
+                <select name="proyecto" id="proyecto">
+                    @foreach($proyectos as $proyecto)
+                        <option value="{{$proyecto->id}}" {{$historia->proyecto == $proyecto->id ? 'selected' : ''}}>{{$proyecto->id}}. {{$proyecto->nombre}}</option>
+                    @endforeach
 
+                </select>
                 @if ($errors->has('proyecto'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('proyecto') }}</strong>
@@ -79,9 +84,9 @@
             <div class="">
 {{--                <input id="proyecto" type="select" class="form-control" name="proyecto" value="{{$epica->proyecto}}">--}}
                 <select id="prioridad" name="prioridad">
-                    <option value="alta">Alta</option>
-                    <option value="media">Media</option>
-                    <option value="baja">Baja</option>
+                    <option value="alta" {{$historia->prioridad == 'alta' ? 'selected': ''}}>Alta</option>
+                    <option value="media" {{$historia->prioridad == 'media' ? 'selected': ''}}>Media</option>
+                    <option value="baja" {{$historia->prioridad == 'baja' ? 'selected': ''}}>Baja</option>
 
                 </select>
                 @if ($errors->has('prioridad'))
@@ -112,8 +117,13 @@
             <label for="epica" class="control-label">Épica</label>
 
             <div class="">
-                <input id="epica" type="string" class="form-control" name="epica" value="{{$historia->epica}}">
+{{--                <input id="epica" type="string" class="form-control" name="epica" value="{{$historia->epica}}">--}}
+                <select name="epica" id="epica">
+                    @foreach($epicas as $epica)
+                        <option value="{{$epica->id}}" {{$historia->epica == $epica->id ? 'selected' : ''}}>{{$epica->id}}. {{$epica->nombre}}</option>
+                    @endforeach
 
+                </select>
                 @if ($errors->has('epica'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('epica') }}</strong>

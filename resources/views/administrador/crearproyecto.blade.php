@@ -43,10 +43,16 @@
         </div>
 
         <div class="form-group{{ $errors->has('stakeholder') ? ' has-error' : '' }}">
-            <label for="stakeholder" class="control-label">Stakeholder</label>
+            <label for="stakeholder" class="control-label">Stakeholders</label>
 
             <div class="">
-                <input id="stakeholder" type="string" class="form-control" name="stakeholder">
+                {{--                <input id="epica" type="string" class="form-control" name="epica" >--}}
+                <select name="stakeholder" id="stakeholder">
+                    @foreach($stakeholders as $stakeholder)
+                        <option value="{{$stakeholder->id}}" >{{$stakeholder->id}}. {{$stakeholder->nombre}}</option>
+                    @endforeach
+
+                </select>
 
                 @if ($errors->has('stakeholder'))
                     <span class="help-block">
@@ -60,7 +66,13 @@
             <label for="equipo" class="control-label">Equipo</label>
 
             <div class="">
-                <input id="equipo" type="string" class="form-control" name="equipo">
+                {{--                <input id="epica" type="string" class="form-control" name="epica" >--}}
+                <select name="equipo" id="equipo">
+                    @foreach($equipos as $equipo)
+                        <option value="{{$equipo->id}}" >{{$equipo->id}}. {{$equipo->nombre}}</option>
+                    @endforeach
+
+                </select>
 
                 @if ($errors->has('equipo'))
                     <span class="help-block">

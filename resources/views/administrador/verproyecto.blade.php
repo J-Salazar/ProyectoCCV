@@ -48,7 +48,10 @@
                 <label for="stakeholder" class="control-label">Stakeholder</label>
 
                 <div class="">
-                    <input id="stakeholder" type="string" class="form-control" name="stakeholder" value="{{$proyecto->stakeholder}}" readonly>
+                    @php
+                        $stakeholder = App\Stakeholder::Where('id',$proyecto->stakeholder)->first()
+                    @endphp
+                    <input id="equipo" type="string" class="form-control" name="equipo" value="{{$stakeholder->id}}. {{$stakeholder->nombre}}" readonly>
 
                     @if ($errors->has('stakeholder'))
                         <span class="help-block">
@@ -62,7 +65,10 @@
                 <label for="equipo" class="control-label">Equipo</label>
 
                 <div class="">
-                    <input id="equipo" type="string" class="form-control" name="equipo" value="{{$proyecto->equipo}}" readonly>
+                    @php
+                        $equipo = App\Equipo::Where('id',$proyecto->equipo)->first()
+                    @endphp
+                    <input id="equipo" type="string" class="form-control" name="equipo" value="{{$equipo->id}}. {{$equipo->nombre}}" readonly>
 
                     @if ($errors->has('equipo'))
                         <span class="help-block">
@@ -100,7 +106,7 @@
                 </div>
             </div>
             <div class="d-flex flex-row-reverse pb-2">
-                @if($usuario->id == $proyecto->clienteid)
+                @if($cliente->id == $proyecto->clienteid)
                 <button type="submit" class="btn btn-link border-primary align-items-center">
                     <a class="" href="/administrador/editarproyecto/{{$proyecto->id}}">Editar</a>
 

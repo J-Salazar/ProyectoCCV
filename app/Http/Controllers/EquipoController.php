@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class EquipoController extends Controller
@@ -26,6 +27,74 @@ class EquipoController extends Controller
     {
         //
     }
+
+//
+
+    public function crear(Request $request){
+
+        $usuario = auth()->user();
+
+//        $proyectos = Equipo::all();
+
+        return view('administrador.crearequipo')->with(['usuario'=>$usuario]);
+    }
+
+    public function crearequipo(Request $request){
+
+        $nuevoequipo = new Equipo;
+
+        $nuevoequipo->nombre = $request->nombre;
+        $nuevoequipo->lider = $request->lider;
+        $nuevoequipo->desarrollador = $request->desarrollador;
+
+        $nuevoequipo->save();
+
+        $mensaje = 'Equipo creado exitosamente';
+        $usuario = auth()->user();
+
+        return redirect(url('/administrador/verequipos'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
+
+    }
+
+
+
+    public function ver(Request $request){
+
+        $equipos = Equipo::all();
+        $usuario = auth()->user();
+
+        return view('administrador.verequipo')->with(['equipos'=>$equipos, 'usuario'=>$usuario]);
+    }
+
+    public function editar(Request $request, $equipoid){
+
+        $equipo = Equipo::where('id',$equipoid)->get()->first();
+        $usuario = auth()->user();
+
+
+        return view('administrador.editarequipo')->with(['usuario'=>$usuario,'equipoid'=>$equipoid,'equipo'=>$equipo]);
+    }
+
+    public function editarequipo(Request $request, $equipoid){
+
+        $equipo = Equipo::Find($equipoid);
+
+        $equipo->nombre       = $request->nombre;
+        $equipo->lider  = $request->lider;
+        $equipo->desarrollador  = $request->desarrollador;
+
+
+
+        $equipo->save();
+
+        $mensaje = 'Equipo actualizado';
+        $usuario = auth()->user();
+
+        return redirect(url()->previous())->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
+
+    }
+
+//
 
     /**
      * Store a newly created resource in storage.
