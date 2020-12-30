@@ -63,11 +63,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Administrador::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+//        return Administrador::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => bcrypt($data['password']),
+//        ]);
+
+        $nuevoadministrador = new Administrador;
+
+        //$new_cliente -> orgnzs() -> associate($orgnz);
+        $nuevoadministrador->nombre      = $data['name'];
+        $nuevoadministrador->apellido  = $data['apellido'];
+        $nuevoadministrador->email = $data['email'];
+        $nuevoadministrador->password  = bcrypt($data['password']);
+
+        $nuevoadministrador->nivel  = 'administrador';
+
+
+
+
+
+        $nuevoadministrador->save();
+
+        $mensaje = 'Desarrollador creado exitosamente';
+//        $usuario = auth()->user();
+        Auth::login($nuevoadministrador);
+        return redirect(url('/administrador'));
+//        return redirect(url('/administrador/verusuarios'))->with(['mensaje'=>$mensaje]);
     }
 
     /**
