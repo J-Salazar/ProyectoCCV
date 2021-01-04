@@ -49,7 +49,9 @@
                 {{--                <input id="epica" type="string" class="form-control" name="epica" >--}}
                 <select name="stakeholder" id="stakeholder">
                     @foreach($stakeholders as $stakeholder)
+                        @if($stakeholder->administrador == $usuario->id)
                         <option value="{{$stakeholder->id}}" >{{$stakeholder->id}}. {{$stakeholder->nombre}}</option>
+                        @endif
                     @endforeach
 
                 </select>
@@ -69,7 +71,9 @@
                 {{--                <input id="epica" type="string" class="form-control" name="epica" >--}}
                 <select name="equipo" id="equipo">
                     @foreach($equipos as $equipo)
+                        @if($equipo->administrador == $usuario->id)
                         <option value="{{$equipo->id}}" >{{$equipo->id}}. {{$equipo->nombre}}</option>
+                        @endif
                     @endforeach
 
                 </select>

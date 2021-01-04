@@ -42,6 +42,9 @@ class StakeholderController extends Controller
 
     public function crearstakeholder(Request $request){
 
+        $usuario = auth()->user();
+
+
         $nuevostakeholder = new Stakeholder;
 
         $nuevostakeholder->nombre = $request->nombre;
@@ -49,11 +52,12 @@ class StakeholderController extends Controller
         $nuevostakeholder->email = $request->email;
         $nuevostakeholder->proyecto = $request->proyecto;
 
+        $nuevostakeholder->administrador = $usuario->id;
+
 
         $nuevostakeholder->save();
 
         $mensaje = 'Stakeholder creado exitosamente';
-        $usuario = auth()->user();
 
         return redirect(url('/administrador/verstakeholders'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
 

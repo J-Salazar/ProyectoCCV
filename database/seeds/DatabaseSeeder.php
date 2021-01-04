@@ -59,6 +59,10 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('123456'),
 
                 'nivel' => 'desarrollador',
+
+                'administrador' => $faker->numberBetween($min=1, $max=5),
+
+                'equipo' => $faker->numberBetween($min=1, $max=5)
             ]);
             $num++;
         }
@@ -72,6 +76,7 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker->email,
 
                 'proyecto' => $faker->numberBetween($min=1, $max=10),
+                'administrador' => $faker->numberBetween($min=1, $max=5),
 
             ]);
         }
@@ -116,6 +121,8 @@ class DatabaseSeeder extends Seeder
                 'nombre' => $faker->company,
                 'lider' => $faker->name,
                 'desarrollador' => $faker->name,
+
+                'administrador' => $faker->numberBetween($min=1, $max=5),
             ]);
         }
 

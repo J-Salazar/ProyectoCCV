@@ -76,7 +76,17 @@
             <label for="equipo" class="control-label">Equipo</label>
 
             <div class="">
-                <input id="equipo" type="string" class="form-control" name="equipo">
+{{--                <input id="equipo" type="string" class="form-control" name="equipo">--}}
+                <select name="stakeholder" id="stakeholder">
+                    @php
+                        $equipos = App\Equipo::where('administrador',$usuario->id)->get();
+                    @endphp
+
+                    @foreach($equipos as $equipo)
+                        <option value="{{$equipo->id}}" >{{$equipo->id}}. {{$equipo->nombre}}</option>
+                    @endforeach
+
+                </select>
 
                 @if ($errors->has('equipo'))
                     <span class="help-block">

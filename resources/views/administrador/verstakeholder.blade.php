@@ -38,6 +38,9 @@
                 <tbody>
                 @foreach($stakeholders as $stakeholder)
 
+
+                    @if($stakeholder->administrador == $usuario->id)
+
                     <tr>
 
                         {{--                        @if($cliente->usuarioid == $usuario->id)--}}
@@ -65,6 +68,8 @@
 
                         {{--                        @endif--}}
                     </tr>
+
+                    @endif
 
                 @endforeach
 

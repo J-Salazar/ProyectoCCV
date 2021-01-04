@@ -37,6 +37,8 @@
 
                 <tbody>
                 @foreach($desarrolladores as $desarrollador)
+
+                    @if($desarrollador->administrador == $usuario->id)
                     <tr>
                         <th scope="row">{{ $desarrollador->nombre }}</th>
                         <td>{{ $desarrollador->apellido }}</td>
@@ -45,7 +47,11 @@
                         @if($desarrollador->equipo == '')
                             <td>No asignado</td>
                         @else
-                            <td>{{$desarrollador->equipo}}</td>
+                            @php
+                                $equipo = App\Equipo::where('id',$desarrollador->equipo)->first();
+                            @endphp
+
+                            <td>{{$equipo->nombre}}</td>
                         @endif
 
                         <td>
@@ -61,6 +67,8 @@
                             </div>
                         </td>
                     </tr>
+                    @endif
+
                 @endforeach
 
 

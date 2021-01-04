@@ -41,16 +41,20 @@ class EquipoController extends Controller
 
     public function crearequipo(Request $request){
 
+        $usuario = auth()->user();
+
         $nuevoequipo = new Equipo;
 
         $nuevoequipo->nombre = $request->nombre;
         $nuevoequipo->lider = $request->lider;
         $nuevoequipo->desarrollador = $request->desarrollador;
 
+        $nuevoequipo->administrador = $usuario->id;
+
         $nuevoequipo->save();
 
         $mensaje = 'Equipo creado exitosamente';
-        $usuario = auth()->user();
+
 
         return redirect(url('/administrador/verequipos'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
 

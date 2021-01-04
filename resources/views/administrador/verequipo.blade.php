@@ -36,6 +36,8 @@
                 <tbody>
                 @foreach($equipos as $equipo)
 
+                    @if($equipo->administrador == $usuario->id)
+
                     <tr>
 
 {{--                        @if($cliente->usuarioid == $usuario->id)--}}
@@ -59,6 +61,8 @@
 
 {{--                        @endif--}}
                     </tr>
+
+                    @endif
 
                 @endforeach
 

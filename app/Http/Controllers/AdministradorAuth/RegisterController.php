@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdministradorAuth;
 
 use App\Administrador;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -90,6 +91,31 @@ class RegisterController extends Controller
         Auth::login($nuevoadministrador);
         return redirect(url('/administrador'));
 //        return redirect(url('/administrador/verusuarios'))->with(['mensaje'=>$mensaje]);
+    }
+
+    public function registraradministrador(Request $request){
+
+        $nuevoadministrador = new Administrador;
+
+        //$new_cliente -> orgnzs() -> associate($orgnz);
+        $nuevoadministrador->nombre      = $request->name;
+        $nuevoadministrador->apellido  = $request->apellido;
+        $nuevoadministrador->email = $request->email;
+        $nuevoadministrador->password  = bcrypt($request->password);
+
+        $nuevoadministrador->nivel  = 'administrador';
+
+
+
+
+
+        $nuevoadministrador->save();
+
+        $mensaje = 'Desarrollador creado exitosamente';
+//        $usuario = auth()->user();
+//        Auth::login($nuevoadministrador);
+        return redirect(url('/administrador/login'));
+
     }
 
     /**

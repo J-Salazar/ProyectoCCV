@@ -24,6 +24,8 @@ class CreateDesarrolladorsTable extends Migration
             $table->string('nivel');
             $table->string('equipo')->nullable();
 
+            $table->string('administrador');
+
             $table->rememberToken();
             $table->timestamps();
         });

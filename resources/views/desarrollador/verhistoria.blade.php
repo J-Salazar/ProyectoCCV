@@ -53,13 +53,24 @@
 
                         @if($historia->desarrollador == $usuario->id)
 
+                            @php
+                                $proyecto = App\Proyecto::Where('id',$historia->proyecto)->first()
+                            @endphp
+
+                            @php
+                                $epica = App\Epica::Where('id',$historia->epica)->first()
+                            @endphp
+
                             <th scope="row">{{ $historia->resumen }}</th>
                             <td>{{ $historia->descripcion }}</td>
                             <td>{{ $historia->usuario }}</td>
-                            <td>{{ $historia->proyecto }}</td>
+
+                            <td>{{ $proyecto->nombre }}</td>
+
                             <td>{{ $historia->prioridad }}</td>
                             <td>{{ $historia->tiempoestimado }}</td>
-                            <td>{{ $historia->epica }}</td>
+
+                            <td>{{ $epica->nombre }}</td>
 
                             <td>
                                 <div class="dropdown">

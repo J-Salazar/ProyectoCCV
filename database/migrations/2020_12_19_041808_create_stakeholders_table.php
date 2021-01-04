@@ -23,6 +23,7 @@ class CreateStakeholdersTable extends Migration
 
 
             $table->string('proyecto')->nullable();
+            $table->string('administrador');
 
 
             $table->timestamps();

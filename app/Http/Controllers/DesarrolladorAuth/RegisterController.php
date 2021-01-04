@@ -88,6 +88,9 @@ class RegisterController extends Controller
 
     public function creardesarrollador(Request $request){
 
+        $usuario = auth()->user();
+
+
         $nuevodesarrollador = new Desarrollador();
 
         //$new_cliente -> orgnzs() -> associate($orgnz);
@@ -100,13 +103,14 @@ class RegisterController extends Controller
 
         $nuevodesarrollador->equipo      = $request->equipo;
 
+        $nuevodesarrollador->administrador      = $usuario->id;
+
 
         $nuevodesarrollador->save();
 
         $mensaje = 'Desarrollador creado exitosamente';
-        $usuario = auth()->user();
 
-        return redirect(url('/administrador/verusuarios'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
+        return redirect(url('/administrador/verdesarrolladores'))->with(['mensaje'=>$mensaje,'usuario'=>$usuario]);
 
 //        return view('administrador.crearproyecto')->with(['clienteid'=>$clienteid]);
     }

@@ -20,6 +20,8 @@ class CreateEquiposTable extends Migration
             $table->string('lider');
             $table->string('desarrollador');
 
+            $table->string('administrador');
+
 
             $table->timestamps();
         });
