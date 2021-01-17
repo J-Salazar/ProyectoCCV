@@ -41,35 +41,41 @@
 
                     @if($stakeholder->administrador == $usuario->id)
 
-                    <tr>
+                        <tr>
 
-                        {{--                        @if($cliente->usuarioid == $usuario->id)--}}
+                            {{--                        @if($cliente->usuarioid == $usuario->id)--}}
 
-                        <th scope="row">{{ $stakeholder->nombre }}</th>
-                        <td>{{ $stakeholder->apellido }}</td>
-                        <td>{{ $stakeholder->email }}</td>
-                        @php
-                            $proyecto = App\Proyecto::Where('id',$stakeholder->proyecto)->first()
-                        @endphp
-                        <td>{{ $proyecto->nombre }}</td>
+                            <th scope="row">{{ $stakeholder->nombre }}</th>
+                            <td>{{ $stakeholder->apellido }}</td>
+                            <td>{{ $stakeholder->email }}</td>
+                            @php
+                                $proyecto = App\Proyecto::Where('id',$stakeholder->proyecto)->first();
+                                //$proyecto = App\Proyecto::Where('id',11)->first();
+                                //if($proyecto==null) $var = "123";
+                                //dd($var);
+                            @endphp
+                            @if($proyecto==null)
+                                <td>No asignado</td>
+                            @else
+                                <td>{{ $proyecto->nombre }}</td>
+                            @endif
 
-
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Acciones
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{url('administrador/editarstakeholder/'.$stakeholder->id)}}">Editar</a>
-                                    <a class="dropdown-item" href="#">Eliminar</a>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Acciones
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{url('administrador/editarstakeholder/'.$stakeholder->id)}}">Editar</a>
+                                        <a class="dropdown-item" href="#">Eliminar</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
 
-                        {{--                        @endif--}}
-                    </tr>
+                            {{--                        @endif--}}
+                        </tr>
 
-                    @endif
+                @endif
 
                 @endforeach
 
@@ -79,3 +85,4 @@
     </div>
 
 @endsection
+

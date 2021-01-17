@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker->companyEmail,
                 'direccion' => $faker->address,
 //                'stakeholder' => $faker->lastName,
-                'usuarioid' => $faker->numberBetween($min=1,$max=10),
+                'usuarioid' => $faker->numberBetween($min=1,$max=5),
                 'nivel' => $faker->randomElement(['administrador']),
 
 

@@ -32,3 +32,6 @@ Route::post('/editarhistoria/{historiaid}','HistoriaUsuarioController@editarhist
 Route::get('/crearhistoria/{desarrolladorid}','HistoriaUsuarioController@crear');
 Route::post('/crearhistoria/{desarrolladorid}','HistoriaUsuarioController@crearhistoriausuario');
 
+
+Route::get('/verbacklog','Backlog@ver');
+

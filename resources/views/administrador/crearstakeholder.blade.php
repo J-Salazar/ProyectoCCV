@@ -66,6 +66,8 @@
                         <option value="{{$proyecto->id}}" >{{$proyecto->id}}. {{$proyecto->nombre}}</option>
                     @endforeach
 
+                    <option value=" " selected >No asiganado</option>
+
                 </select>
 
                 @if ($errors->has('proyecto'))

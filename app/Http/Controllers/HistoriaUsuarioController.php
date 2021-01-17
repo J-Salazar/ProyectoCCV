@@ -47,9 +47,13 @@ class HistoriaUsuarioController extends Controller
         $nuevohistoriausuario->resumen   = $request->resumen;
         $nuevohistoriausuario->descripcion   = $request->descripcion;
         $nuevohistoriausuario->usuario   = $request->usuario;
-        $nuevohistoriausuario->proyecto  = $request->proyecto;
+
+        $nuevohistoriausuario->fechainicio  = $request->fechainicio;
+        $nuevohistoriausuario->fechafinal   = $request->fechafinal;
+
         $nuevohistoriausuario->prioridad = $request->prioridad;
-        $nuevohistoriausuario->tiempoestimado    = $request->tiempoestimado;
+        $nuevohistoriausuario->estado = $request->estado;
+//        $nuevohistoriausuario->tiempoestimado    = $request->tiempoestimado;
         $nuevohistoriausuario->epica = $request->epica;
 
 
@@ -103,8 +107,13 @@ class HistoriaUsuarioController extends Controller
         $historiausuario->resumen   = $request->resumen;
         $historiausuario->descripcion   = $request->descripcion;
         $historiausuario->usuario   = $request->usuario;
-        $historiausuario->proyecto  = $request->proyecto;
+
+        $historiausuario->fechainicio  = $request->fechainicio;
+        $historiausuario->fechafinal  = $request->fechafinal;
+
+
         $historiausuario->prioridad = $request->prioridad;
+        $historiausuario->estado = $request->estado;
         $historiausuario->tiempoestimado    = $request->tiempoestimado;
         $historiausuario->epica = $request->epica;
 

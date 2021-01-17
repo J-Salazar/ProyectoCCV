@@ -24,9 +24,9 @@
                     <th>resumen</th>
                     <th>descripcion</th>
                     <th>usuario</th>
-                    <th>proyecto</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Final</th>
                     <th>prioridad</th>
-                    <th>Tiempo Estimado</th>
                     <th>epica</th>
 
                     <th><span> </span> </th>
@@ -37,9 +37,9 @@
                     <th>resumen</th>
                     <th>descripcion</th>
                     <th>usuario</th>
-                    <th>proyecto</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Final</th>
                     <th>prioridad</th>
-                    <th>Tiempo Estimado</th>
                     <th>epica</th>
 
                     <th><span> </span> </th>
@@ -53,9 +53,9 @@
 
                         @if($historia->desarrollador == $usuario->id)
 
-                            @php
-                                $proyecto = App\Proyecto::Where('id',$historia->proyecto)->first()
-                            @endphp
+{{--                            @php--}}
+{{--                                $proyecto = App\Proyecto::Where('id',$historia->proyecto)->first()--}}
+{{--                            @endphp--}}
 
                             @php
                                 $epica = App\Epica::Where('id',$historia->epica)->first()
@@ -65,10 +65,20 @@
                             <td>{{ $historia->descripcion }}</td>
                             <td>{{ $historia->usuario }}</td>
 
-                            <td>{{ $proyecto->nombre }}</td>
+                            <td><input type="datetime-local" id="meeting-time"
+                                       name="meeting-time" value="{{ $historia->fechainicio }}"
+                                       readonly>
+
+                            </td>
+
+                            <td><input type="datetime-local" id="meeting-time"
+                                       name="meeting-time" value="{{ $historia->fechafinal }}"
+                                        readonly>
+
+                            </td>
+
 
                             <td>{{ $historia->prioridad }}</td>
-                            <td>{{ $historia->tiempoestimado }}</td>
 
                             <td>{{ $epica->nombre }}</td>
 

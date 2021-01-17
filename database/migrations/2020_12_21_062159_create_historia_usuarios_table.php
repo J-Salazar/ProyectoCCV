@@ -19,9 +19,15 @@ class CreateHistoriaUsuariosTable extends Migration
             $table->string('resumen');
             $table->string('descripcion');
             $table->string('usuario');
-            $table->string('proyecto');
+
+            $table->string('fechainicio');
+            $table->string('fechafinal');
+
             $table->string('prioridad');
-            $table->string('tiempoestimado');
+            $table->string('estado');
+
+//            $table->string('tiempoestimado');
+
             $table->string('epica');
 
             $table->string('desarrollador');    //Desarrollador id

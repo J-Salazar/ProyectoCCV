@@ -58,20 +58,35 @@
         </div>
 
 
-        <div class="form-group{{ $errors->has('proyecto') ? ' has-error' : '' }}">
-            <label for="proyecto" class="control-label">Proyecto</label>
+        <div class="form-group{{ $errors->has('fechainicio') ? ' has-error' : '' }}">
+            <label for="fechainicio" class="control-label">Fecha Inicio</label>
 
             <div class="">
 {{--                <input id="proyecto" type="string" class="form-control" name="proyecto" >--}}
-                <select name="proyecto" id="proyecto">
-                    @foreach($proyectos as $proyecto)
-                        <option value="{{$proyecto->id}}">{{$proyecto->id}}. {{$proyecto->nombre}}</option>
-                    @endforeach
+                <input type="datetime-local" id="fechainicio"
+                       name="fechainicio" value="2021-01-07T19:30"
+                       min="2021-01-07T00:00" max="">
 
-                </select>
-                @if ($errors->has('proyecto'))
+                @if ($errors->has('fechainicio'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('proyecto') }}</strong>
+                                        <strong>{{ $errors->first('fechainicio') }}</strong>
+                                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('fechafinal') ? ' has-error' : '' }}">
+            <label for="fechafinal" class="control-label">Fecha Final</label>
+
+            <div class="">
+                {{--                <input id="proyecto" type="string" class="form-control" name="proyecto" >--}}
+                <input type="datetime-local" id="fechafinal"
+                       name="fechafinal" value="2021-01-08T19:30"
+                       min="2021-01-08T00:00" max="">
+
+                @if ($errors->has('fechafinal'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('fechafinal') }}</strong>
                                     </span>
                 @endif
             </div>
@@ -97,20 +112,39 @@
             </div>
         </div>
 
-
-        <div class="form-group{{ $errors->has('tiempoestimado') ? ' has-error' : '' }}">
-            <label for="tiempoestimado" class="control-label">Tiempo estimado</label>
+        <div class="form-group{{ $errors->has('estado') ? ' has-error' : '' }}">
+            <label for="estado" class="control-label">Estado</label>
 
             <div class="">
-                <input id="tiempoestimado" type="string" class="form-control" name="tiempoestimado" >
+                {{--                <input id="proyecto" type="select" class="form-control" name="proyecto" value="{{$epica->proyecto}}">--}}
+                <select id="prioridad" name="estado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="en proceso">En proceso</option>
+                    <option value="finalizado">Finalizado</option>
 
-                @if ($errors->has('tiempoestimado'))
+                </select>
+                @if ($errors->has('estado'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('tiempoestimado') }}</strong>
+                                        <strong>{{ $errors->first('estado') }}</strong>
                                     </span>
                 @endif
             </div>
         </div>
+
+
+{{--        <div class="form-group{{ $errors->has('tiempoestimado') ? ' has-error' : '' }}">--}}
+{{--            <label for="tiempoestimado" class="control-label">Tiempo estimado</label>--}}
+
+{{--            <div class="">--}}
+{{--                <input id="tiempoestimado" type="string" class="form-control" name="tiempoestimado" >--}}
+
+{{--                @if ($errors->has('tiempoestimado'))--}}
+{{--                    <span class="help-block">--}}
+{{--                                        <strong>{{ $errors->first('tiempoestimado') }}</strong>--}}
+{{--                                    </span>--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
         <div class="form-group{{ $errors->has('epica') ? ' has-error' : '' }}">
