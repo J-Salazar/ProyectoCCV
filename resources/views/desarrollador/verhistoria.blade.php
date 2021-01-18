@@ -32,7 +32,7 @@
                     <th><span> </span> </th>
                 </tr>
                 </thead>
-                <tfoot>
+                <tfoot class="thead-dark">
                 <tr>
                     <th>Resumen</th>
                     <th>Nombre</th>
