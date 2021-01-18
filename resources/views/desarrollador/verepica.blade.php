@@ -28,7 +28,7 @@
                     <th><span> </span> </th>
                 </tr>
                 </thead>
-                <tfoot>
+                <tfoot class="thead-dark">
                 <tr>
                     <th>Proyecto</th>
                     <th>Nombre</th>
@@ -36,7 +36,7 @@
 
                     <th><span> </span> </th>
                 </tr>
-                </tfoot class="thead-dark">
+                </tfoot>
 
 
                 <tbody>
