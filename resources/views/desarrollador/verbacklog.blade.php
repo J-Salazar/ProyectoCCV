@@ -25,7 +25,7 @@
                 </tr>
                 </thead>
 
-                <tfoot>
+                <tfoot class="thead-dark">
                 <tr>
                     <th>Nro</th>
                     <th>Pendientes</th>

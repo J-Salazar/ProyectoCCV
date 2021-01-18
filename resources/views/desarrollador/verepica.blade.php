@@ -36,7 +36,7 @@
 
                     <th><span> </span> </th>
                 </tr>
-                </tfoot>
+                </tfoot class="thead-dark">
 
 
                 <tbody>
