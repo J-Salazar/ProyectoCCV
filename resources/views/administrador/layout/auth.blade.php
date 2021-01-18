@@ -34,7 +34,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/administrador') }}">
+                <a class="navbar-brand" href="#">
                     {{ config('app.name', 'Laravel Multi Auth Guard') }}: Administrador
                 </a>
             </div>

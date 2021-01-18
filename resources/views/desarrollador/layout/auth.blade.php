@@ -34,7 +34,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/desarrollador') }}">
+                <a class="navbar-brand" href="#">
                     {{ config('app.name', 'Laravel Multi Auth Guard') }}: Desarrollador
                 </a>
             </div>
