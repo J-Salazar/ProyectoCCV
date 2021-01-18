@@ -29,7 +29,7 @@
 
 
         <div class="form-group{{ $errors->has('descripcion') ? ' has-error' : '' }}">
-            <label for="descripcion" class="control-label">Descripcion</label>
+            <label for="descripcion" class="control-label">Nombre</label>
 
             <div class="">
                 <input id="descripcion" type="string" class="form-control" name="descripcion" value="{{$historia->descripcion}}">
@@ -44,7 +44,7 @@
 
 
         <div class="form-group{{ $errors->has('proyecto') ? ' has-error' : '' }}">
-            <label for="usuario" class="control-label">Usuario</label>
+            <label for="usuario" class="control-label">Desarrollador</label>
 
             <div class="">
                 <input id="usuario" type="string" class="form-control" name="usuario" value="{{$historia->usuario}}">

@@ -19,7 +19,7 @@
 
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead class="thead-dark">
                 <tr>
                     <th>Proyecto</th>
                     <th>Nombre</th>

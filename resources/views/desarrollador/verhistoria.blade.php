@@ -19,28 +19,28 @@
 
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead class="thead-dark">
                 <tr>
-                    <th>resumen</th>
-                    <th>descripcion</th>
-                    <th>usuario</th>
+                    <th>Resumen</th>
+                    <th>Nombre</th>
+                    <th>Desarrollador</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Final</th>
                     <th>prioridad</th>
-                    <th>epica</th>
+                    <th>Épica</th>
 
                     <th><span> </span> </th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>resumen</th>
-                    <th>descripcion</th>
-                    <th>usuario</th>
+                    <th>Resumen</th>
+                    <th>Nombre</th>
+                    <th>Desarrollador</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Final</th>
                     <th>prioridad</th>
-                    <th>epica</th>
+                    <th>Épica</th>
 
                     <th><span> </span> </th>
                 </tr>
@@ -88,7 +88,7 @@
                                         Acciones
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{url('desarrollador/editarhistoria/'.$historia->id)}}">Editar</a>
+{{--                                        <a class="dropdown-item" href="{{url('desarrollador/editarhistoria/'.$historia->id)}}">Editar</a>--}}
                                         <a class="dropdown-item" href="#">Eliminar</a>
                                     </div>
                                 </div>
